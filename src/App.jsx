@@ -1,4 +1,4 @@
-import BarcodeScanner from './BarcodeScanner';
+import SimpleBarcodeScanner from './SimpleBarcodeScanner';
 import React, { useState, useEffect } from 'react';
 import { Camera, Plus, Calendar, List, ShoppingCart, Trash2, Search, Moon, Sun, Download, Package, Utensils, BarChart3, LogOut, Loader } from 'lucide-react';
 import { signUp, signIn, signOut, onAuthChange, savePantryData, loadPantryData, saveProductToDatabase, getProductFromDatabase } from './firebaseHelpers';
