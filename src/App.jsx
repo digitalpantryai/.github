@@ -389,8 +389,8 @@ const DigitalPantry = () => {
   
   // Camera Scanner Modal
   if (showCameraScanner) {
-    return (
-      <BarcodeScanner 
+  return (
+    <SimpleBarcodeScanner 
         onScan={(barcode) => {
           setShowCameraScanner(false);
           scanBarcode(barcode);
