@@ -378,7 +378,41 @@ const DigitalPantry = () => {
   if (showTerms) {
     return <Terms onBack={() => setShowTerms(false)} darkMode={darkMode} />;
   }
-
+// Privacy/Terms screens
+  if (showPrivacy) {
+    return <PrivacyPolicy onBack={() => setShowPrivacy(false)} darkMode={darkMode} />;
+  }
+  
+  if (showTerms) {
+    return <Terms onBack={() => setShowTerms(false)} darkMode={darkMode} />;
+  }
+  
+  // Camera Scanner Modal
+  if (showCameraScanner) {
+    return (
+      <BarcodeScanner 
+        onScan={(barcode) => {
+          setShowCameraScanner(false);
+          scanBarcode(barcode);
+        }}
+        onClose={() => setShowCameraScanner(false)}
+        darkMode={darkMode}
+      />
+    );
+  }
+  
+  // Login/Signup screen
+  if (!isAuthenticated) {
+    return (
+      <div className={`min-h-screen ${bgClass} flex items-center justify-center p-4`}>
+        <div className={`${cardClass} rounded-3xl shadow-2xl p-8 max-w-md w-full`}>
+          <div className="text-center mb-8">
+            <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-3xl flex items-center justify-center shadow-lg mx-auto mb-4">
+              <Package className="text-white" size={40} />
+            </div>
+            <h1 className={`text-4xl font-bold ${textClass} mb-2`}>Pantry</h1>
+            <p className={mutedClass}>Smart inventory management</p>
+          </div>
   // Login/Signup screen
   if (!isAuthenticated) {
     return (
