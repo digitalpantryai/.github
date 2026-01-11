@@ -1,3 +1,4 @@
+import BarcodeScanner from './BarcodeScanner';
 import React, { useState, useEffect } from 'react';
 import { Camera, Plus, Calendar, List, ShoppingCart, Trash2, Search, Moon, Sun, Download, Package, Utensils, BarChart3, LogOut, Loader } from 'lucide-react';
 import { signUp, signIn, signOut, onAuthChange, savePantryData, loadPantryData, saveProductToDatabase, getProductFromDatabase } from './firebaseHelpers';
@@ -19,7 +20,8 @@ const DigitalPantry = () => {
   
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
-  
+  const [showScanner, setShowScanner] = useState(false);
+  const [showCameraScanner, setShowCameraScanner] = useState(false);
   const [view, setView] = useState('list');
   const [darkMode, setDarkMode] = useState(false);
   const [pantryItems, setPantryItems] = useState([]);
@@ -586,12 +588,20 @@ const DigitalPantry = () => {
           <div className={`${cardClass} rounded-3xl shadow-xl p-6 mb-6`}>
             <h2 className={`text-2xl font-bold mb-4 ${textClass}`}>Add New Item</h2>
             
-            <button
-              onClick={() => setShowScanner(!showScanner)}
-              className="w-full mb-4 flex items-center justify-center gap-2 bg-purple-500 text-white px-6 py-3 rounded-xl font-medium hover:bg-purple-600 transition-all"
-            >
-              <Camera size={20} /> {showScanner ? 'Close Scanner' : 'Scan Barcode'}
-            </button>
+            <div className="flex gap-2 mb-4">
+  <button
+    onClick={() => setShowCameraScanner(true)}
+    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all"
+  >
+    <Camera size={20} /> Scan with Camera
+  </button>
+  <button
+    onClick={() => setShowScanner(!showScanner)}
+    className="flex-1 flex items-center justify-center gap-2 bg-gray-500 text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-600 transition-all"
+  >
+    Enter Manually
+  </button>
+</div>
 
             {showScanner && (
               <div className={`mb-4 p-4 rounded-xl ${darkMode ? 'bg-purple-500/10' : 'bg-purple-50'}`}>
