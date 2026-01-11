@@ -8,7 +8,7 @@
     "react-dom": "^18.2.0",
     "lucide-react": "^0.263.1",
     "firebase": "^10.7.1",
-    "html5-qrcode": "^2.3.8"
+
   },
   "scripts": {
     "dev": "vite",
